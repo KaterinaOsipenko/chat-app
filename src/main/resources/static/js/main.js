@@ -117,18 +117,18 @@ function changeName() {
     chatPage.classList.add('hidden');
 }
 
-// function onChange(event) {
-//     username = document.querySelector('#nameChanger').value.trim();
-//
-//     usernameChangePage.classList.add('hidden');
-//     chatPage.classList.remove('hidden');
-//
-//     stompClient.send("/app/chat.changeName",
-//         {},
-//         JSON.stringify({sender: username, type: 'CHANGE'})
-//     )
-//     event.preventDefault();
-// }
+function onChange(event) {
+    username = document.querySelector('#nameChanger').value.trim();
+
+    usernameChangePage.classList.add('hidden');
+    chatPage.classList.remove('hidden');
+
+    stompClient.send("/app/chat.changeName",
+        {},
+        JSON.stringify({sender: username, type: 'CHANGE'})
+    )
+    event.preventDefault();
+}
 
 function getAvatarColor(messageSender) {
     var hash = 0;
@@ -141,4 +141,4 @@ function getAvatarColor(messageSender) {
 
 usernameForm.addEventListener('submit', connect, true)
 messageForm.addEventListener('submit', sendMessage, true)
-// usernameChangeForm.addEventListener('submit', onChange, true)
+usernameChangeForm.addEventListener('submit', onChange, true)
