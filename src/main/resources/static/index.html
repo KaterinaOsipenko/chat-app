@@ -15,10 +15,24 @@
         <h1 class="title">Type your username</h1>
         <form id="usernameForm" name="usernameForm">
             <div class="form-group">
-                <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
+                <input type="text" id="nameChange" placeholder="Username" autocomplete="off" class="form-control" />
             </div>
             <div class="form-group">
                 <button type="submit" class="accent username-submit">Start Chatting</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="username-change-page" class="hidden">
+    <div class="username-page-container">
+        <h1 class="title">Change your username</h1>
+        <form id="usernameChangeForm" name="usernameChangeForm">
+            <div class="form-group">
+                <input type="text" id="nameChanger" placeholder="Username" autocomplete="off" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="accent username-change-submit">Continue Chatting</button>
             </div>
         </form>
     </div>
@@ -36,11 +50,14 @@
 
         </ul>
         <form id="messageForm" name="messageForm">
-            <div class="form-group">
-                <div class="input-group clearfix">
+            <div class="form-group" style="display: flex;">
+                <div   class="input-group clearfix">
                     <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
-                    <button type="submit" class="primary">Send</button>
+
+                        <button type="submit" class="primary">Send</button>
+
                 </div>
+                <button style="width: 25%;" id="changeName">Change username</button>
             </div>
         </form>
     </div>

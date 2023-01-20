@@ -104,7 +104,7 @@ button.accent {
     color: #fff;
 }
 
-#username-page {
+#username-page, #username-change-page {
     text-align: center;
 }
 
@@ -128,7 +128,7 @@ button.accent {
     margin-top: -160px;
 }
 
-.username-page-container .username-submit {
+.username-page-container .username-submit, .username-change-submit {
     margin-top: 10px;
 }
 
@@ -223,9 +223,13 @@ button.accent {
     width: calc(100% - 85px);
 }
 
+
+.changeName .primary {
+    margin: auto;
+}
+
 #messageForm .input-group button {
     float: left;
-    width: 80px;
     height: 38px;
     margin-left: 5px;
 }
@@ -279,6 +283,7 @@ button.accent {
     #messageForm .input-group button {
         width: 65px;
     }
+
 
     #messageForm .input-group input {
         width: calc(100% - 70px);

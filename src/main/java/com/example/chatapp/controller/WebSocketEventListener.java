@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
-import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Component;
@@ -34,7 +33,7 @@ public class WebSocketEventListener {
             logger.info("User disconnected " + username);
 
             ChatMessage chatMessage = new ChatMessage();
-            chatMessage.setMessageType(MessageType.LEAVE);
+            chatMessage.setType(MessageType.LEAVE);
             chatMessage.setSender(username);
 
             operations.convertAndSend("/topic/public", chatMessage);

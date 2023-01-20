@@ -1,12 +1,15 @@
-'use strict';
+
 
 var usernamePage = document.querySelector('#username-page');
 var chatPage = document.querySelector('#chat-page');
+var usernameChangePage = document.querySelector('#username-change-page');
 var usernameForm = document.querySelector('#usernameForm');
 var messageForm = document.querySelector('#messageForm');
 var messageInput = document.querySelector('#message');
 var messageArea = document.querySelector('#messageArea');
 var connectingElement = document.querySelector('.connecting');
+var btnChangeName = document.querySelector('#changeName');
+var usernameChangeForm = document.querySelector('#usernameChangeForm');
 
 var stompClient = null;
 var username = null;
@@ -15,6 +18,8 @@ var colors = [
     '#2196F3', '#32c787', '#00BCD4', '#ff5652',
     '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
 ];
+
+btnChangeName.onclick = changeName;
 
 function connect(event) {
     username = document.querySelector('#name').value.trim();
@@ -78,6 +83,9 @@ function onMessageReceived(payload) {
     } else if (message.type === 'LEAVE') {
         messageElement.classList.add('event-message');
         message.content = message.sender + ' left!';
+    } else if (message.type === 'CHANGE') {
+        messageElement.classList.add('event-message');
+        message.content = message.sender + ' changed!';
     } else {
         messageElement.classList.add('chat-message');
 
@@ -104,6 +112,23 @@ function onMessageReceived(payload) {
     messageArea.scrollTop = messageArea.scrollHeight;
 }
 
+function changeName() {
+    usernameChangePage.classList.remove('hidden');
+    chatPage.classList.add('hidden');
+}
+
+// function onChange(event) {
+//     username = document.querySelector('#nameChanger').value.trim();
+//
+//     usernameChangePage.classList.add('hidden');
+//     chatPage.classList.remove('hidden');
+//
+//     stompClient.send("/app/chat.changeName",
+//         {},
+//         JSON.stringify({sender: username, type: 'CHANGE'})
+//     )
+//     event.preventDefault();
+// }
 
 function getAvatarColor(messageSender) {
     var hash = 0;
@@ -116,3 +141,4 @@ function getAvatarColor(messageSender) {
 
 usernameForm.addEventListener('submit', connect, true)
 messageForm.addEventListener('submit', sendMessage, true)
+// usernameChangeForm.addEventListener('submit', onChange, true)
